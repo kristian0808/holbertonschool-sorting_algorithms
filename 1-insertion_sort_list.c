@@ -8,17 +8,17 @@
 */
 void swap_nodes(listint_t **list, listint_t *node)
 {
-    node->prev->next = node->next;
-    if (node->next)
-        node->next->prev = node->prev;
-    node->next = node->prev;
-    node->prev = node->prev->prev;
-    node->next->prev = node;
-    if (!node->prev)
-        *list = node;
-    else
-        node->prev->next = node;
-    print_list((const listint_t *)*list);
+	node->prev->next = node->next;
+	if (node->next)
+		node->next->prev = node->prev;
+	node->next = node->prev;
+	node->prev = node->prev->prev;
+	node->next->prev = node;
+	if (!node->prev)
+		*list = node;
+	else
+		node->prev->next = node;
+	print_list((const listint_t *)*list);
 }
 
 /**
@@ -29,17 +29,17 @@ void swap_nodes(listint_t **list, listint_t *node)
 */
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *current, *temp;
+	listint_t *current, *temp;
 
-    if (!list || !*list || !(*list)->next)
-        return;
+	if (!list || !*list || !(*list)->next)
+		return;
 
-    for (current = (*list)->next; current; current = temp)
-    {
-        temp = current->next;
-        while (current->prev && current->prev->n > current->n)
-        {
-            swap_nodes(list, current);
-        }
-    }
+	for (current = (*list)->next; current; current = temp)
+	{
+		temp = current->next;
+		while (current->prev && current->prev->n > current->n)
+		{
+			swap_nodes(list, current);
+		}
+	}
 }
